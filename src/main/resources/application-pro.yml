@@ -1,0 +1,6 @@
+spring:
+  jdbc:
+    username: root
+    password: 01184510
+    driverClassName: com.mysql.cj.jdbc.Driver1
+    url: pro
