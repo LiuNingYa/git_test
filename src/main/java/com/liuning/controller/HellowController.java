@@ -9,7 +9,9 @@ import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -47,23 +49,24 @@ public class HellowController {
         }
         return user;
     }
-    @RequestMapping("/insertByid")
-    public void insertByid(){
-//        IPage<User> userIPage = userMapper.selectPage();
-        User user = new User();
-        user.setUserName("刘宁");
-        user.setPassWord("555");
-        int i = userMapper.insert(user);
-        System.out.println(i);
-    }
-    @RequestMapping("/insertByid1")
-    public void insertByid1(){
-//        IPage<User> userIPage = userMapper.selectPage();
-        User user = new User();
-        user.setUserName("刘宁");
-        user.setPassWord("555");
-        int i = userMapper.insert(user);
-        System.out.println(i);
+    @RequestMapping("/selectById")
+    public User selectById(@RequestParam("id") Integer id){
+        User user = userMapperIpml.selectById(id);
+        return user;
     }
 
+    @PostMapping("/insert")
+    public int insert(User user){
+        Integer insert = userMapperIpml.insert(user);
+        return insert;
+    }
+
+    @PostMapping("/update")
+    public int update(User user){
+        User user1 = new User();
+        user1.setUserName(user.getUserName());
+        user1.setPassWord(user.getPassWord());
+        Integer insert = userMapperIpml.update(user);
+        return insert;
+    }
 }
