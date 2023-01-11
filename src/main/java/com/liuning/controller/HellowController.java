@@ -56,5 +56,14 @@ public class HellowController {
         int i = userMapper.insert(user);
         System.out.println(i);
     }
+    @RequestMapping("/insertByid1")
+    public void insertByid1(){
+//        IPage<User> userIPage = userMapper.selectPage();
+        User user = new User();
+        user.setUserName("刘宁");
+        user.setPassWord("555");
+        int i = userMapper.insert(user);
+        System.out.println(i);
+    }
 
 }
