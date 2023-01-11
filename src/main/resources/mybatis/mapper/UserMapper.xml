@@ -8,4 +8,5 @@
     <select id="selectAll" resultType="com.liuning.pojo.User">
         select * from yonghuxinxi
     </select>
+    <!--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-->
 </mapper>
